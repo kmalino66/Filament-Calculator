@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Filament Calculator")>
+<Assembly: AssemblyTitle("Filament-Calculator")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("Filament Calculator")>
+<Assembly: AssemblyProduct("Filament-Calculator")>
 <Assembly: AssemblyCopyright("Copyright ©  2015")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("b243275d-26b9-4772-8751-4c9432ba3b35")>
+<Assembly: Guid("e0e0ed60-a65e-4c7d-ac5f-92e75c737472")>
 
 ' Version information for an assembly consists of the following four values:
 '
