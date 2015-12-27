@@ -71,6 +71,7 @@ Partial Class Form1
         Me.saveFilSet = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.Label19 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -500,11 +501,21 @@ Partial Class Form1
         '
         Me.SaveFileDialog1.DefaultExt = "txt"
         '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(13, 386)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(126, 13)
+        Me.Label19.TabIndex = 30
+        Me.Label19.Text = "Made by Kyle Malinowski"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(769, 411)
+        Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.radio_mm)
         Me.Controls.Add(Me.radio_meters)
         Me.Controls.Add(Me.printerTotalCost)
@@ -590,4 +601,5 @@ Partial Class Form1
     Friend WithEvents File As ToolStripMenuItem
     Friend WithEvents openSettings As ToolStripMenuItem
     Friend WithEvents saveFilSet As ToolStripMenuItem
+    Friend WithEvents Label19 As Label
 End Class

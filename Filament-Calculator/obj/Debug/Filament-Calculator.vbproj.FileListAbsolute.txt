@@ -1,1 +1,14 @@
 F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\bin\Debug\Filament-Calculator.exe.config
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\bin\Debug\Filament-Calculator.exe
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\bin\Debug\Filament-Calculator.pdb
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\bin\Debug\Filament-Calculator.xml
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament_Calculator.Resources.resources
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament-Calculator.vbproj.GenerateResource.Cache
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament-Calculator.exe
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament-Calculator.xml
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament-Calculator.pdb
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament_Calculator.Form1.resources
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\bin\Debug\Filament-Calculator.exe.manifest
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\bin\Debug\Filament-Calculator.application
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament-Calculator.exe.manifest
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament-Calculator.application

@@ -1,5 +1,8 @@
-﻿Public Class Form1
+﻿Imports System.ComponentModel
+Imports System.IO
 
+Public Class Form1
+    Public fileName As String
 
     'This handles behavior for when a the radio button is clicked
     Private Sub radio_m_CheckedChanged(sender As Object, e As EventArgs) Handles radio_m.CheckedChanged
@@ -41,6 +44,11 @@
 
         'Selects one of the radio buttones
         radio_m.Checked = True
+        radio_meters.Checked = True
+        fileName = My.Settings.lastFileName
+
+        SaveFileDialog1.FileName = fileName
+        OpenFileDialog1.FileName = fileName
 
     End Sub
 
@@ -152,6 +160,10 @@
 
         End If
 
+        If filamentCost.Text Is "" Then
+            filamentCost.Text = 0
+        End If
+
     End Sub
 
     'This is called when one of the radio buttons is selected.
@@ -190,8 +202,20 @@
     Private Sub OpenFileDialog1_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles OpenFileDialog1.FileOk
 
         'Get the location and name of the file.
-        Dim file = OpenFileDialog1.FileName
+        fileName = OpenFileDialog1.FileName
+        Dim objStreamReader As StreamReader
 
+        objStreamReader = New StreamReader(fileName)
+        costPerMeter.Text = objStreamReader.ReadLine
+        workerHourly.Text = objStreamReader.ReadLine
+        printerCostPerHour.Text = objStreamReader.ReadLine
+        upchargePercent.Text = objStreamReader.ReadLine
+
+        objStreamReader.Close()
+
+        radio_cpm.Checked = True
+        SaveFileDialog1.FileName = fileName
+        My.Settings.lastFileName = fileName
 
     End Sub
 
@@ -204,5 +228,27 @@
     'This is run when the user clicks the save setting button in the menu strip.
     Private Sub saveFilSet_Click(sender As Object, e As EventArgs) Handles saveFilSet.Click
         SaveFileDialog1.ShowDialog()
+    End Sub
+
+    Private Sub SaveFileDialog1_FileOk(sender As Object, e As CancelEventArgs) Handles SaveFileDialog1.FileOk
+        fileName = SaveFileDialog1.FileName
+
+        Dim objStreamWriter As StreamWriter
+
+        objStreamWriter = New StreamWriter(fileName)
+
+        objStreamWriter.WriteLine(costPerMeter.Text)
+        objStreamWriter.WriteLine(workerHourly.Text)
+        objStreamWriter.WriteLine(printerCostPerHour.Text)
+        objStreamWriter.WriteLine(upchargePercent.Text)
+
+        objStreamWriter.Close()
+
+        OpenFileDialog1.FileName = fileName
+        My.Settings.lastFileName = fileName
+    End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs)
+
     End Sub
 End Class
