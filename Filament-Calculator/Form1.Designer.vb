@@ -69,9 +69,11 @@ Partial Class Form1
         Me.File = New System.Windows.Forms.ToolStripMenuItem()
         Me.openSettings = New System.Windows.Forms.ToolStripMenuItem()
         Me.saveFilSet = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.Label19 = New System.Windows.Forms.Label()
+        Me.comboTool = New System.Windows.Forms.ToolStripComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -467,10 +469,10 @@ Partial Class Form1
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.File})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.File, Me.comboTool, Me.NewToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(769, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(769, 27)
         Me.MenuStrip1.TabIndex = 29
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -478,7 +480,7 @@ Partial Class Form1
         '
         Me.File.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.openSettings, Me.saveFilSet})
         Me.File.Name = "File"
-        Me.File.Size = New System.Drawing.Size(37, 20)
+        Me.File.Size = New System.Drawing.Size(37, 23)
         Me.File.Text = "File"
         '
         'openSettings
@@ -492,6 +494,12 @@ Partial Class Form1
         Me.saveFilSet.Name = "saveFilSet"
         Me.saveFilSet.Size = New System.Drawing.Size(192, 22)
         Me.saveFilSet.Text = "Save Filament Settings"
+        '
+        'NewToolStripMenuItem
+        '
+        Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(43, 23)
+        Me.NewToolStripMenuItem.Text = "New"
         '
         'OpenFileDialog1
         '
@@ -509,6 +517,11 @@ Partial Class Form1
         Me.Label19.Size = New System.Drawing.Size(126, 13)
         Me.Label19.TabIndex = 30
         Me.Label19.Text = "Made by Kyle Malinowski"
+        '
+        'comboTool
+        '
+        Me.comboTool.Name = "comboTool"
+        Me.comboTool.Size = New System.Drawing.Size(121, 23)
         '
         'Form1
         '
@@ -602,4 +615,6 @@ Partial Class Form1
     Friend WithEvents openSettings As ToolStripMenuItem
     Friend WithEvents saveFilSet As ToolStripMenuItem
     Friend WithEvents Label19 As Label
+    Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents comboTool As ToolStripComboBox
 End Class

@@ -3,6 +3,8 @@ Imports System.IO
 
 Public Class Form1
     Public fileName As String
+    Public filamentSettings(0)() As String
+
 
     'This handles behavior for when a the radio button is clicked
     Private Sub radio_m_CheckedChanged(sender As Object, e As EventArgs) Handles radio_m.CheckedChanged
@@ -49,6 +51,10 @@ Public Class Form1
 
         SaveFileDialog1.FileName = fileName
         OpenFileDialog1.FileName = fileName
+
+        If fileName IsNot Nothing And fileName IsNot "" Then
+            loadProfile(fileName)
+        End If
 
     End Sub
 
@@ -203,19 +209,69 @@ Public Class Form1
 
         'Get the location and name of the file.
         fileName = OpenFileDialog1.FileName
-        Dim objStreamReader As StreamReader
+        'Dim objStreamReader As StreamReader
 
-        objStreamReader = New StreamReader(fileName)
-        costPerMeter.Text = objStreamReader.ReadLine
-        workerHourly.Text = objStreamReader.ReadLine
-        printerCostPerHour.Text = objStreamReader.ReadLine
-        upchargePercent.Text = objStreamReader.ReadLine
+        'objStreamReader = New StreamReader(fileName)
+        'costPerMeter.Text = objStreamReader.ReadLine
+        'workerHourly.Text = objStreamReader.ReadLine
+        'printerCostPerHour.Text = objStreamReader.ReadLine
+        'upchargePercent.Text = objStreamReader.ReadLine
 
-        objStreamReader.Close()
+        'objStreamReader.Close()
+
 
         radio_cpm.Checked = True
         SaveFileDialog1.FileName = fileName
         My.Settings.lastFileName = fileName
+        loadProfile(fileName)
+
+
+    End Sub
+
+    Public Sub loadProfile(fileName1 As String)
+        Dim strLine As String
+        Dim number As Integer
+        number = 0
+
+        Dim reader = New StreamReader(fileName1)
+
+        strLine = reader.ReadLine
+
+
+
+        Do While Not strLine Is Nothing
+
+            ReDim Preserve filamentSettings(number)
+            Dim buffer() = strLine.Split(":")
+
+            filamentSettings(number) = {buffer(0), buffer(1), buffer(2), buffer(3), buffer(4)}
+
+
+            strLine = reader.ReadLine
+
+            If strLine IsNot Nothing Then
+                number += 1
+
+            End If
+
+        Loop
+
+        For counter As Integer = 0 To (number)
+
+            comboTool.Items.Add(filamentSettings(counter)(0))
+
+
+        Next
+
+        reader.Close()
+
+        setProfileSpool(0)
+
+    End Sub
+
+    Public Sub setProfileSpool(spoolNumber As Integer)
+
+        comboTool.SelectedIndex = spoolNumber
 
     End Sub
 
@@ -237,10 +293,11 @@ Public Class Form1
 
         objStreamWriter = New StreamWriter(fileName)
 
-        objStreamWriter.WriteLine(costPerMeter.Text)
-        objStreamWriter.WriteLine(workerHourly.Text)
-        objStreamWriter.WriteLine(printerCostPerHour.Text)
-        objStreamWriter.WriteLine(upchargePercent.Text)
+        For index As Integer = 0 To filamentSettings.Length - 1
+
+            objStreamWriter.WriteLine(filamentSettings(index)(0) + ":" + filamentSettings(index)(1) + ":" + filamentSettings(index)(2) + ":" + filamentSettings(index)(3) + ":" + filamentSettings(index)(4))
+
+        Next
 
         objStreamWriter.Close()
 
@@ -250,5 +307,50 @@ Public Class Form1
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub comboTool_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboTool.SelectedIndexChanged
+
+
+
+
+        If filamentSettings(comboTool.SelectedIndex)(0) IsNot Nothing Then
+
+            costPerMeter.Text = filamentSettings(comboTool.SelectedIndex)(1)
+            workerHourly.Text = filamentSettings(comboTool.SelectedIndex)(2)
+            printerCostPerHour.Text = filamentSettings(comboTool.SelectedIndex)(3)
+            upchargePercent.Text = filamentSettings(comboTool.SelectedIndex)(4)
+
+        Else
+            costPerMeter.Text = 0
+            workerHourly.Text = 0
+            printerCostPerHour.Text = 0
+            upchargePercent.Text = 0
+        End If
+
+    End Sub
+
+    Private Sub NewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
+        Dim par1 As New Form2
+        par1.Show()
+    End Sub
+
+    Public Sub createNewEmptySpool(name As String, index As Integer)
+
+        ReDim Preserve filamentSettings(index)
+
+        filamentSettings(index) = {name, 0, 0, 0, 0}
+        comboTool.Items.Add(name)
+        comboTool.SelectedIndex = index
+
+    End Sub
+
+    Private Sub comboTool_GotFocus(sender As Object, e As EventArgs) Handles comboTool.GotFocus
+        Dim index = comboTool.SelectedIndex
+
+        filamentSettings(index)(1) = costPerMeter.Text
+        filamentSettings(index)(2) = workerHourly.Text
+        filamentSettings(index)(3) = printerCostPerHour.Text
+        filamentSettings(index)(4) = upchargePercent.Text
     End Sub
 End Class
