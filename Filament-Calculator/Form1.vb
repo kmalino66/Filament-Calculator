@@ -56,6 +56,15 @@ Public Class Form1
             loadProfile(fileName)
         End If
 
+        'Dim temp As New Panel
+        ' temp = stencil_panel
+        'temp.Visible = True
+        ' Dim temp1 = temp.Controls.Find("label_name", False)
+        'For counter As Integer = 0 To (temp1.Length - 1)
+        'temp1(counter).Text = "magic"
+        'Next
+
+        'FlowLayoutPanel1.Controls.Add(temp)
     End Sub
 
     'Called when calculate button is pressed.
