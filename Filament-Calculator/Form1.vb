@@ -338,6 +338,19 @@ Public Class Form1
 
         Next
 
+        objStreamWriter.WriteLine()
+
+        For f As Integer = 0 To filamentSpool.Length - 1
+
+            Dim name = filamentSpool(f).Name
+            Dim type = filamentSpool(f).Type
+            Dim cost = filamentSpool(f).Cost
+            Dim avail = filamentSpool(f).Available
+            Dim orig = filamentSpool(f).Original
+
+            objStreamWriter.WriteLine()
+        Next
+
         objStreamWriter.Close()
 
         OpenFileDialog1.FileName = fileName
