@@ -4,6 +4,10 @@ Imports System.IO
 Public Class Form1
     Public fileName As String
     Public filamentSettings(0)() As String
+    Public filamentSpool() As FSpool
+    Public moneySpent As Double
+    Public moneyRecieved As Double
+    Public totalFilamentUsed As Double
 
 
     'This handles behavior for when a the radio button is clicked
@@ -56,15 +60,7 @@ Public Class Form1
             loadProfile(fileName)
         End If
 
-        'Dim temp As New Panel
-        ' temp = stencil_panel
-        'temp.Visible = True
-        ' Dim temp1 = temp.Controls.Find("label_name", False)
-        'For counter As Integer = 0 To (temp1.Length - 1)
-        'temp1(counter).Text = "magic"
-        'Next
 
-        'FlowLayoutPanel1.Controls.Add(temp)
     End Sub
 
     'Called when calculate button is pressed.
@@ -237,10 +233,13 @@ Public Class Form1
 
     End Sub
 
+    'This loads the user profile.
     Public Sub loadProfile(fileName1 As String)
         Dim strLine As String
         Dim number As Integer
+        Dim number0 As Integer
         number = 0
+        number0 = 0
 
         Dim reader = New StreamReader(fileName1)
 
@@ -248,7 +247,7 @@ Public Class Form1
 
 
 
-        Do While Not strLine Is Nothing
+        Do While Not strLine Is Nothing Or Not strLine Is ""
 
             ReDim Preserve filamentSettings(number)
             Dim buffer() = strLine.Split(":")
@@ -271,6 +270,36 @@ Public Class Form1
 
 
         Next
+
+        strLine = reader.ReadLine
+
+        Do While Not strLine Is Nothing Or Not strLine Is ""
+
+            ReDim Preserve filamentSpool(number0)
+            Dim buffer() = strLine.Split(":")
+
+            filamentSpool(number0) = New FSpool(buffer(0), buffer(1), Double.Parse(buffer(2)), Double.Parse(buffer(3)), Double.Parse(buffer(4)))
+
+            strLine = reader.ReadLine
+
+            If strLine IsNot Nothing Then
+                number0 += 1
+            End If
+
+        Loop
+
+        strLine = reader.ReadLine
+
+        Do While Not strLine Is Nothing
+
+            Dim buffer() = strLine.Split(":")
+
+            moneySpent = Double.Parse(buffer(0))
+            moneyRecieved = Double.Parse(buffer(1))
+            totalFilamentUsed = Double.Parse(buffer(2))
+        Loop
+
+
 
         reader.Close()
 
@@ -295,6 +324,7 @@ Public Class Form1
         SaveFileDialog1.ShowDialog()
     End Sub
 
+    'This is run when the ok button is pressed on the save file dialog.
     Private Sub SaveFileDialog1_FileOk(sender As Object, e As CancelEventArgs) Handles SaveFileDialog1.FileOk
         fileName = SaveFileDialog1.FileName
 
@@ -314,10 +344,12 @@ Public Class Form1
         My.Settings.lastFileName = fileName
     End Sub
 
+    'Obsolete
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
     End Sub
 
+    'This is run when the comboBox on the toolbar is changed.
     Private Sub comboTool_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboTool.SelectedIndexChanged
 
 
@@ -339,11 +371,13 @@ Public Class Form1
 
     End Sub
 
+    'This is run when the new button on the tool strip menu is pressed.
     Private Sub NewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
         Dim par1 As New Form2
         par1.Show()
     End Sub
 
+    'This creates an empty spool....
     Public Sub createNewEmptySpool(name As String, index As Integer)
 
         ReDim Preserve filamentSettings(index)
