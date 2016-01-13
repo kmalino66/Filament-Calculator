@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Filament-Calculator.exe" size="44488">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Filament-Calculator.exe" size="51144">
       <assemblyIdentity name="Filament-Calculator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GnJufB1Ru5SZgIH0e7AQXVwbCL4VWVHf8APAxiqsaJs=</dsig:DigestValue>
+        <dsig:DigestValue>4HMppiDEBBO2pETgm1RH9t7y+vatpTiRlHCg8SgZjME=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

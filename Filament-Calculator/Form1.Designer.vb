@@ -69,6 +69,7 @@ Partial Class Form1
         Me.File = New System.Windows.Forms.ToolStripMenuItem()
         Me.openSettings = New System.Windows.Forms.ToolStripMenuItem()
         Me.saveFilSet = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NewProfileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.comboTool = New System.Windows.Forms.ToolStripComboBox()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
@@ -77,34 +78,31 @@ Partial Class Form1
         Me.v = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.stencil_panel = New System.Windows.Forms.Panel()
-        Me.button_useSpool = New System.Windows.Forms.Button()
         Me.label_original = New System.Windows.Forms.Label()
         Me.label_available = New System.Windows.Forms.Label()
         Me.textbox_original = New System.Windows.Forms.TextBox()
         Me.textbox_available = New System.Windows.Forms.TextBox()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
-        Me.label_name = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.button_decommission_spool = New System.Windows.Forms.Button()
-        Me.button_new_spool = New System.Windows.Forms.Button()
-        Me.button_duplicate_new = New System.Windows.Forms.Button()
-        Me.combobox_filament_type = New System.Windows.Forms.ComboBox()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.textbox_spool_cost = New System.Windows.Forms.TextBox()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.button_save_changes = New System.Windows.Forms.Button()
+        Me.filamentUsedTextBox = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.moneyRecTextBox = New System.Windows.Forms.TextBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.moneySpentTextbox = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.textbox_spool_cost = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.combobox_filament_type = New System.Windows.Forms.ComboBox()
+        Me.button_new_spool = New System.Windows.Forms.Button()
+        Me.button_decommission_spool = New System.Windows.Forms.Button()
+        Me.button_useSpool = New System.Windows.Forms.Button()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.make_button = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.v.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
-        Me.stencil_panel.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -507,7 +505,7 @@ Partial Class Form1
         '
         'File
         '
-        Me.File.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.openSettings, Me.saveFilSet})
+        Me.File.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.openSettings, Me.saveFilSet, Me.NewProfileToolStripMenuItem})
         Me.File.Name = "File"
         Me.File.Size = New System.Drawing.Size(37, 23)
         Me.File.Text = "File"
@@ -523,6 +521,12 @@ Partial Class Form1
         Me.saveFilSet.Name = "saveFilSet"
         Me.saveFilSet.Size = New System.Drawing.Size(192, 22)
         Me.saveFilSet.Text = "Save Filament Settings"
+        '
+        'NewProfileToolStripMenuItem
+        '
+        Me.NewProfileToolStripMenuItem.Name = "NewProfileToolStripMenuItem"
+        Me.NewProfileToolStripMenuItem.Size = New System.Drawing.Size(192, 22)
+        Me.NewProfileToolStripMenuItem.Text = "New Profile"
         '
         'comboTool
         '
@@ -564,6 +568,7 @@ Partial Class Form1
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.make_button)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Controls.Add(Me.Label4)
         Me.TabPage1.Controls.Add(Me.charge)
@@ -596,205 +601,83 @@ Partial Class Form1
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.Add(Me.TextBox3)
+        Me.TabPage2.Controls.Add(Me.label_original)
+        Me.TabPage2.Controls.Add(Me.label_available)
+        Me.TabPage2.Controls.Add(Me.textbox_original)
+        Me.TabPage2.Controls.Add(Me.textbox_available)
+        Me.TabPage2.Controls.Add(Me.button_save_changes)
+        Me.TabPage2.Controls.Add(Me.filamentUsedTextBox)
         Me.TabPage2.Controls.Add(Me.Label24)
-        Me.TabPage2.Controls.Add(Me.TextBox2)
+        Me.TabPage2.Controls.Add(Me.moneyRecTextBox)
         Me.TabPage2.Controls.Add(Me.Label23)
-        Me.TabPage2.Controls.Add(Me.TextBox1)
+        Me.TabPage2.Controls.Add(Me.moneySpentTextbox)
         Me.TabPage2.Controls.Add(Me.Label22)
         Me.TabPage2.Controls.Add(Me.textbox_spool_cost)
         Me.TabPage2.Controls.Add(Me.Label21)
         Me.TabPage2.Controls.Add(Me.Label20)
         Me.TabPage2.Controls.Add(Me.combobox_filament_type)
-        Me.TabPage2.Controls.Add(Me.button_duplicate_new)
         Me.TabPage2.Controls.Add(Me.button_new_spool)
         Me.TabPage2.Controls.Add(Me.button_decommission_spool)
         Me.TabPage2.Controls.Add(Me.button_useSpool)
         Me.TabPage2.Controls.Add(Me.ComboBox1)
-        Me.TabPage2.Controls.Add(Me.stencil_panel)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage2.Size = New System.Drawing.Size(779, 442)
         Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Spools of Filament"
+        Me.TabPage2.Text = " Spool Tracker"
         Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'stencil_panel
-        '
-        Me.stencil_panel.Controls.Add(Me.label_original)
-        Me.stencil_panel.Controls.Add(Me.label_available)
-        Me.stencil_panel.Controls.Add(Me.textbox_original)
-        Me.stencil_panel.Controls.Add(Me.textbox_available)
-        Me.stencil_panel.Controls.Add(Me.ProgressBar1)
-        Me.stencil_panel.Controls.Add(Me.label_name)
-        Me.stencil_panel.Location = New System.Drawing.Point(366, 6)
-        Me.stencil_panel.Name = "stencil_panel"
-        Me.stencil_panel.Size = New System.Drawing.Size(248, 133)
-        Me.stencil_panel.TabIndex = 0
-        Me.stencil_panel.Visible = False
-        '
-        'button_useSpool
-        '
-        Me.button_useSpool.Location = New System.Drawing.Point(366, 145)
-        Me.button_useSpool.Name = "button_useSpool"
-        Me.button_useSpool.Size = New System.Drawing.Size(75, 23)
-        Me.button_useSpool.TabIndex = 6
-        Me.button_useSpool.Text = "Use Spool"
-        Me.button_useSpool.UseVisualStyleBackColor = True
         '
         'label_original
         '
         Me.label_original.AutoSize = True
-        Me.label_original.Location = New System.Drawing.Point(72, 93)
+        Me.label_original.Location = New System.Drawing.Point(383, 46)
         Me.label_original.Name = "label_original"
         Me.label_original.Size = New System.Drawing.Size(45, 13)
-        Me.label_original.TabIndex = 5
+        Me.label_original.TabIndex = 25
         Me.label_original.Text = "Original:"
         '
         'label_available
         '
         Me.label_available.AutoSize = True
-        Me.label_available.Location = New System.Drawing.Point(72, 67)
+        Me.label_available.Location = New System.Drawing.Point(383, 20)
         Me.label_available.Name = "label_available"
         Me.label_available.Size = New System.Drawing.Size(53, 13)
-        Me.label_available.TabIndex = 4
+        Me.label_available.TabIndex = 24
         Me.label_available.Text = "Available:"
         '
         'textbox_original
         '
-        Me.textbox_original.Location = New System.Drawing.Point(142, 90)
+        Me.textbox_original.Location = New System.Drawing.Point(453, 43)
         Me.textbox_original.Name = "textbox_original"
         Me.textbox_original.ReadOnly = True
         Me.textbox_original.Size = New System.Drawing.Size(100, 20)
-        Me.textbox_original.TabIndex = 3
+        Me.textbox_original.TabIndex = 23
         '
         'textbox_available
         '
-        Me.textbox_available.Location = New System.Drawing.Point(142, 64)
+        Me.textbox_available.Location = New System.Drawing.Point(453, 17)
         Me.textbox_available.Name = "textbox_available"
         Me.textbox_available.ReadOnly = True
         Me.textbox_available.Size = New System.Drawing.Size(100, 20)
-        Me.textbox_available.TabIndex = 2
+        Me.textbox_available.TabIndex = 22
         '
-        'ProgressBar1
+        'button_save_changes
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(6, 35)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(236, 23)
-        Me.ProgressBar1.TabIndex = 1
+        Me.button_save_changes.Location = New System.Drawing.Point(103, 44)
+        Me.button_save_changes.Name = "button_save_changes"
+        Me.button_save_changes.Size = New System.Drawing.Size(100, 23)
+        Me.button_save_changes.TabIndex = 21
+        Me.button_save_changes.Text = "Save Changes"
+        Me.button_save_changes.UseVisualStyleBackColor = True
         '
-        'label_name
+        'filamentUsedTextBox
         '
-        Me.label_name.Location = New System.Drawing.Point(6, 9)
-        Me.label_name.Name = "label_name"
-        Me.label_name.Size = New System.Drawing.Size(236, 23)
-        Me.label_name.TabIndex = 0
-        Me.label_name.Text = "Name Placeholder"
-        Me.label_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(22, 17)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(264, 21)
-        Me.ComboBox1.TabIndex = 1
-        '
-        'button_decommission_spool
-        '
-        Me.button_decommission_spool.Location = New System.Drawing.Point(447, 145)
-        Me.button_decommission_spool.Name = "button_decommission_spool"
-        Me.button_decommission_spool.Size = New System.Drawing.Size(106, 23)
-        Me.button_decommission_spool.TabIndex = 8
-        Me.button_decommission_spool.Text = "Decommission"
-        Me.button_decommission_spool.UseVisualStyleBackColor = True
-        '
-        'button_new_spool
-        '
-        Me.button_new_spool.Location = New System.Drawing.Point(22, 44)
-        Me.button_new_spool.Name = "button_new_spool"
-        Me.button_new_spool.Size = New System.Drawing.Size(75, 23)
-        Me.button_new_spool.TabIndex = 9
-        Me.button_new_spool.Text = "New Spool"
-        Me.button_new_spool.UseVisualStyleBackColor = True
-        '
-        'button_duplicate_new
-        '
-        Me.button_duplicate_new.Location = New System.Drawing.Point(103, 44)
-        Me.button_duplicate_new.Name = "button_duplicate_new"
-        Me.button_duplicate_new.Size = New System.Drawing.Size(106, 23)
-        Me.button_duplicate_new.TabIndex = 10
-        Me.button_duplicate_new.Text = "Duplicate New"
-        Me.button_duplicate_new.UseVisualStyleBackColor = True
-        '
-        'combobox_filament_type
-        '
-        Me.combobox_filament_type.FormattingEnabled = True
-        Me.combobox_filament_type.Items.AddRange(New Object() {"PLA", "ABS"})
-        Me.combobox_filament_type.Location = New System.Drawing.Point(101, 100)
-        Me.combobox_filament_type.Name = "combobox_filament_type"
-        Me.combobox_filament_type.Size = New System.Drawing.Size(121, 21)
-        Me.combobox_filament_type.TabIndex = 11
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(19, 103)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(76, 13)
-        Me.Label20.TabIndex = 12
-        Me.Label20.Text = "Filament Type:"
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(34, 130)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(61, 13)
-        Me.Label21.TabIndex = 13
-        Me.Label21.Text = "Spool Cost:"
-        '
-        'textbox_spool_cost
-        '
-        Me.textbox_spool_cost.Location = New System.Drawing.Point(122, 127)
-        Me.textbox_spool_cost.Name = "textbox_spool_cost"
-        Me.textbox_spool_cost.Size = New System.Drawing.Size(100, 20)
-        Me.textbox_spool_cost.TabIndex = 14
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(64, 228)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(130, 13)
-        Me.Label22.TabIndex = 15
-        Me.Label22.Text = "Money Spent on Filament:"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(200, 225)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(137, 20)
-        Me.TextBox1.TabIndex = 16
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(39, 254)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(155, 13)
-        Me.Label23.TabIndex = 17
-        Me.Label23.Text = "Money Recieved From Printing:"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(200, 251)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(137, 20)
-        Me.TextBox2.TabIndex = 18
+        Me.filamentUsedTextBox.Location = New System.Drawing.Point(200, 277)
+        Me.filamentUsedTextBox.Name = "filamentUsedTextBox"
+        Me.filamentUsedTextBox.ReadOnly = True
+        Me.filamentUsedTextBox.Size = New System.Drawing.Size(137, 20)
+        Me.filamentUsedTextBox.TabIndex = 20
         '
         'Label24
         '
@@ -805,13 +688,117 @@ Partial Class Form1
         Me.Label24.TabIndex = 19
         Me.Label24.Text = "Filament Used:"
         '
-        'TextBox3
+        'moneyRecTextBox
         '
-        Me.TextBox3.Location = New System.Drawing.Point(200, 277)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.ReadOnly = True
-        Me.TextBox3.Size = New System.Drawing.Size(137, 20)
-        Me.TextBox3.TabIndex = 20
+        Me.moneyRecTextBox.Location = New System.Drawing.Point(200, 251)
+        Me.moneyRecTextBox.Name = "moneyRecTextBox"
+        Me.moneyRecTextBox.ReadOnly = True
+        Me.moneyRecTextBox.Size = New System.Drawing.Size(137, 20)
+        Me.moneyRecTextBox.TabIndex = 18
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(39, 254)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(155, 13)
+        Me.Label23.TabIndex = 17
+        Me.Label23.Text = "Money Recieved From Printing:"
+        '
+        'moneySpentTextbox
+        '
+        Me.moneySpentTextbox.Location = New System.Drawing.Point(200, 225)
+        Me.moneySpentTextbox.Name = "moneySpentTextbox"
+        Me.moneySpentTextbox.ReadOnly = True
+        Me.moneySpentTextbox.Size = New System.Drawing.Size(137, 20)
+        Me.moneySpentTextbox.TabIndex = 16
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(64, 228)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(130, 13)
+        Me.Label22.TabIndex = 15
+        Me.Label22.Text = "Money Spent on Filament:"
+        '
+        'textbox_spool_cost
+        '
+        Me.textbox_spool_cost.Location = New System.Drawing.Point(122, 127)
+        Me.textbox_spool_cost.Name = "textbox_spool_cost"
+        Me.textbox_spool_cost.Size = New System.Drawing.Size(100, 20)
+        Me.textbox_spool_cost.TabIndex = 14
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(34, 130)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(61, 13)
+        Me.Label21.TabIndex = 13
+        Me.Label21.Text = "Spool Cost:"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(19, 103)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(76, 13)
+        Me.Label20.TabIndex = 12
+        Me.Label20.Text = "Filament Type:"
+        '
+        'combobox_filament_type
+        '
+        Me.combobox_filament_type.FormattingEnabled = True
+        Me.combobox_filament_type.Items.AddRange(New Object() {"PLA", "ABS"})
+        Me.combobox_filament_type.Location = New System.Drawing.Point(101, 100)
+        Me.combobox_filament_type.Name = "combobox_filament_type"
+        Me.combobox_filament_type.Size = New System.Drawing.Size(121, 21)
+        Me.combobox_filament_type.TabIndex = 11
+        '
+        'button_new_spool
+        '
+        Me.button_new_spool.Location = New System.Drawing.Point(22, 44)
+        Me.button_new_spool.Name = "button_new_spool"
+        Me.button_new_spool.Size = New System.Drawing.Size(75, 23)
+        Me.button_new_spool.TabIndex = 9
+        Me.button_new_spool.Text = "New Spool"
+        Me.button_new_spool.UseVisualStyleBackColor = True
+        '
+        'button_decommission_spool
+        '
+        Me.button_decommission_spool.Location = New System.Drawing.Point(447, 69)
+        Me.button_decommission_spool.Name = "button_decommission_spool"
+        Me.button_decommission_spool.Size = New System.Drawing.Size(106, 23)
+        Me.button_decommission_spool.TabIndex = 8
+        Me.button_decommission_spool.Text = "Decommission"
+        Me.button_decommission_spool.UseVisualStyleBackColor = True
+        '
+        'button_useSpool
+        '
+        Me.button_useSpool.Location = New System.Drawing.Point(366, 69)
+        Me.button_useSpool.Name = "button_useSpool"
+        Me.button_useSpool.Size = New System.Drawing.Size(75, 23)
+        Me.button_useSpool.TabIndex = 6
+        Me.button_useSpool.Text = "Use Spool"
+        Me.button_useSpool.UseVisualStyleBackColor = True
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(22, 17)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(293, 21)
+        Me.ComboBox1.TabIndex = 1
+        '
+        'make_button
+        '
+        Me.make_button.Location = New System.Drawing.Point(657, 346)
+        Me.make_button.Name = "make_button"
+        Me.make_button.Size = New System.Drawing.Size(75, 23)
+        Me.make_button.TabIndex = 29
+        Me.make_button.Text = "Make"
+        Me.make_button.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -834,8 +821,6 @@ Partial Class Form1
         Me.TabPage1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
-        Me.stencil_panel.ResumeLayout(False)
-        Me.stencil_panel.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -896,25 +881,24 @@ Partial Class Form1
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents button_useSpool As Button
-    Friend WithEvents label_original As Label
-    Friend WithEvents label_available As Label
-    Friend WithEvents textbox_original As TextBox
-    Friend WithEvents textbox_available As TextBox
-    Friend WithEvents ProgressBar1 As ProgressBar
-    Friend WithEvents label_name As Label
-    Public WithEvents stencil_panel As Panel
     Friend WithEvents textbox_spool_cost As TextBox
     Friend WithEvents Label21 As Label
     Friend WithEvents Label20 As Label
     Friend WithEvents combobox_filament_type As ComboBox
-    Friend WithEvents button_duplicate_new As Button
     Friend WithEvents button_new_spool As Button
     Friend WithEvents button_decommission_spool As Button
     Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents filamentUsedTextBox As TextBox
     Friend WithEvents Label24 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents moneyRecTextBox As TextBox
     Friend WithEvents Label23 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents moneySpentTextbox As TextBox
     Friend WithEvents Label22 As Label
+    Friend WithEvents button_save_changes As Button
+    Friend WithEvents label_original As Label
+    Friend WithEvents label_available As Label
+    Friend WithEvents textbox_original As TextBox
+    Friend WithEvents textbox_available As TextBox
+    Friend WithEvents NewProfileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents make_button As Button
 End Class

@@ -57,7 +57,42 @@ Public Class Form1
         OpenFileDialog1.FileName = fileName
 
         If fileName IsNot Nothing And fileName IsNot "" Then
-            loadProfile(fileName)
+
+            Try
+                loadProfile(fileName)
+
+            Catch ex As Exception
+
+                MsgBox("There was an error loading the save file", MsgBoxStyle.OkOnly, "Error")
+
+                'Set all to 0 to help not break stuff
+                comboTool.Items.Clear()
+                spoolcost.Text = 0
+                workerHourly.Text = 0
+                printerCostPerHour.Text = 0
+                upchargePercent.Text = 0
+                filamentamount_meters.Text = 0
+                spoolmass.Text = 0
+                filamentdensity.Text = 0
+                filamentdiameter.Text = 0
+                costPerMeter.Text = 0
+                filamentusage.Text = 0
+                workerHours.Text = 0
+                buildTime.Text = 0
+                setupTime.Text = 0
+                filamentCost.Text = 0
+                workerCost.Text = 0
+                printerTotalCost.Text = 0
+                totalCost.Text = 0
+                charge.Text = 0
+
+
+                ComboBox1.Items.Clear()
+
+
+            End Try
+
+
         End If
 
 
@@ -247,7 +282,7 @@ Public Class Form1
 
 
 
-        Do While Not strLine Is Nothing Or Not strLine Is ""
+        Do While Not strLine Is ""
 
             ReDim Preserve filamentSettings(number)
             Dim buffer() = strLine.Split(":")
@@ -257,7 +292,7 @@ Public Class Form1
 
             strLine = reader.ReadLine
 
-            If strLine IsNot Nothing Then
+            If strLine IsNot "" Then
                 number += 1
 
             End If
@@ -268,12 +303,12 @@ Public Class Form1
 
             comboTool.Items.Add(filamentSettings(counter)(0))
 
-
         Next
+
 
         strLine = reader.ReadLine
 
-        Do While Not strLine Is Nothing Or Not strLine Is ""
+        Do While Not strLine Is ""
 
             ReDim Preserve filamentSpool(number0)
             Dim buffer() = strLine.Split(":")
@@ -282,28 +317,28 @@ Public Class Form1
 
             strLine = reader.ReadLine
 
-            If strLine IsNot Nothing Then
+            If strLine IsNot "" Then
                 number0 += 1
             End If
 
         Loop
 
-        strLine = reader.ReadLine
+        For counter As Integer = 0 To number0
+                ComboBox1.Items.Add(filamentSpool(counter).Name)
+            Next
 
-        Do While Not strLine Is Nothing
+        moneySpent = Double.Parse(reader.ReadLine)
+            moneyRecieved = Double.Parse(reader.ReadLine)
+            totalFilamentUsed = Double.Parse(reader.ReadLine)
 
-            Dim buffer() = strLine.Split(":")
-
-            moneySpent = Double.Parse(buffer(0))
-            moneyRecieved = Double.Parse(buffer(1))
-            totalFilamentUsed = Double.Parse(buffer(2))
-        Loop
+            moneySpentTextbox.Text = moneySpent
+            moneyRecTextBox.Text = moneyRecieved
+            filamentUsedTextBox.Text = totalFilamentUsed
 
 
 
         reader.Close()
 
-        setProfileSpool(0)
 
     End Sub
 
@@ -326,32 +361,11 @@ Public Class Form1
 
     'This is run when the ok button is pressed on the save file dialog.
     Private Sub SaveFileDialog1_FileOk(sender As Object, e As CancelEventArgs) Handles SaveFileDialog1.FileOk
+
         fileName = SaveFileDialog1.FileName
 
-        Dim objStreamWriter As StreamWriter
+        saveFiles(fileName)
 
-        objStreamWriter = New StreamWriter(fileName)
-
-        For index As Integer = 0 To filamentSettings.Length - 1
-
-            objStreamWriter.WriteLine(filamentSettings(index)(0) + ":" + filamentSettings(index)(1) + ":" + filamentSettings(index)(2) + ":" + filamentSettings(index)(3) + ":" + filamentSettings(index)(4))
-
-        Next
-
-        objStreamWriter.WriteLine()
-
-        For f As Integer = 0 To filamentSpool.Length - 1
-
-            Dim name = filamentSpool(f).Name
-            Dim type = filamentSpool(f).Type
-            Dim cost = filamentSpool(f).Cost
-            Dim avail = filamentSpool(f).Available
-            Dim orig = filamentSpool(f).Original
-
-            objStreamWriter.WriteLine()
-        Next
-
-        objStreamWriter.Close()
 
         OpenFileDialog1.FileName = fileName
         My.Settings.lastFileName = fileName
@@ -401,12 +415,110 @@ Public Class Form1
 
     End Sub
 
+    'Called when the combo tool gets all the focus.
     Private Sub comboTool_GotFocus(sender As Object, e As EventArgs) Handles comboTool.GotFocus
         Dim index = comboTool.SelectedIndex
 
-        filamentSettings(index)(1) = costPerMeter.Text
-        filamentSettings(index)(2) = workerHourly.Text
-        filamentSettings(index)(3) = printerCostPerHour.Text
-        filamentSettings(index)(4) = upchargePercent.Text
+        Try
+            filamentSettings(index)(1) = costPerMeter.Text
+            filamentSettings(index)(2) = workerHourly.Text
+            filamentSettings(index)(3) = printerCostPerHour.Text
+            filamentSettings(index)(4) = upchargePercent.Text
+        Catch ex As Exception
+
+        End Try
+
+
+    End Sub
+
+    'Saves all the needed data when called
+    Private Sub saveFiles(strFileName As String)
+
+        Dim objStreamWriter As StreamWriter
+
+        objStreamWriter = New StreamWriter(fileName)
+
+        For index As Integer = 0 To filamentSettings.Length - 1
+
+            objStreamWriter.WriteLine(filamentSettings(index)(0) + ":" + filamentSettings(index)(1) + ":" + filamentSettings(index)(2) + ":" + filamentSettings(index)(3) + ":" + filamentSettings(index)(4))
+
+        Next
+
+        objStreamWriter.WriteLine()
+
+        For f As Integer = 0 To filamentSpool.Length - 1
+
+            Dim name = filamentSpool(f).Name
+            Dim type = filamentSpool(f).Type
+            Dim cost = filamentSpool(f).Cost
+            Dim avail = filamentSpool(f).Available
+            Dim orig = filamentSpool(f).Original
+
+            objStreamWriter.WriteLine(name + ":" + type + ":" + cost + ":" + avail + ":" + orig)
+        Next
+
+
+        objStreamWriter.WriteLine()
+
+        objStreamWriter.WriteLine(moneySpent)
+        objStreamWriter.WriteLine(moneyRecieved)
+        objStreamWriter.WriteLine(totalFilamentUsed)
+
+
+        objStreamWriter.Close()
+
+    End Sub
+
+    Private Sub button_save_changes_Click(sender As Object, e As EventArgs) Handles button_save_changes.Click
+
+        Dim spoolIndex = ComboBox1.SelectedIndex
+
+        filamentSpool(spoolIndex).Name = ComboBox1.Text
+        filamentSpool(spoolIndex).Type = combobox_filament_type.Text
+        filamentSpool(spoolIndex).Available = textbox_available.Text
+        filamentSpool(spoolIndex).Original = textbox_original.Text
+        filamentSpool(spoolIndex).Cost = textbox_spool_cost.Text
+
+    End Sub
+
+    Private Sub NewProfileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewProfileToolStripMenuItem.Click
+        comboTool.Items.Clear()
+        spoolcost.Text = 0
+        workerHourly.Text = 0
+        printerCostPerHour.Text = 0
+        upchargePercent.Text = 0
+        filamentamount_meters.Text = 0
+        spoolmass.Text = 0
+        filamentdensity.Text = 0
+        filamentdiameter.Text = 0
+        costPerMeter.Text = 0
+        filamentusage.Text = 0
+        workerHours.Text = 0
+        buildTime.Text = 0
+        setupTime.Text = 0
+        filamentCost.Text = 0
+        workerCost.Text = 0
+        printerTotalCost.Text = 0
+        totalCost.Text = 0
+        charge.Text = 0
+
+
+        ComboBox1.Items.Clear()
+
+        fileName = Nothing
+        My.Settings.lastFileName = Nothing
+
+
+        ReDim filamentSpool(0)
+        moneySpent = 0
+        moneyRecieved = 0
+        totalFilamentUsed = 0
+
+
+        filamentSettings = Nothing
+
+
+
+
     End Sub
 End Class
