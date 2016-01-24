@@ -77,6 +77,7 @@ Partial Class Form1
         Me.Label19 = New System.Windows.Forms.Label()
         Me.v = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.make_button = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.label_original = New System.Windows.Forms.Label()
         Me.label_available = New System.Windows.Forms.Label()
@@ -97,7 +98,6 @@ Partial Class Form1
         Me.button_decommission_spool = New System.Windows.Forms.Button()
         Me.button_useSpool = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.make_button = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.v.SuspendLayout()
@@ -499,7 +499,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.File, Me.comboTool, Me.NewToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(809, 27)
+        Me.MenuStrip1.Size = New System.Drawing.Size(813, 27)
         Me.MenuStrip1.TabIndex = 29
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -599,6 +599,15 @@ Partial Class Form1
         Me.TabPage1.Text = "Filament Cost Calculator"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'make_button
+        '
+        Me.make_button.Location = New System.Drawing.Point(657, 346)
+        Me.make_button.Name = "make_button"
+        Me.make_button.Size = New System.Drawing.Size(75, 23)
+        Me.make_button.TabIndex = 29
+        Me.make_button.Text = "Make"
+        Me.make_button.UseVisualStyleBackColor = True
+        '
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.label_original)
@@ -625,7 +634,7 @@ Partial Class Form1
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage2.Size = New System.Drawing.Size(779, 442)
         Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = " Spool Tracker"
+        Me.TabPage2.Text = " Spool Tracker(WIP)"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
         'label_original
@@ -633,9 +642,8 @@ Partial Class Form1
         Me.label_original.AutoSize = True
         Me.label_original.Location = New System.Drawing.Point(383, 46)
         Me.label_original.Name = "label_original"
-        Me.label_original.Size = New System.Drawing.Size(45, 13)
+        Me.label_original.Size = New System.Drawing.Size(0, 13)
         Me.label_original.TabIndex = 25
-        Me.label_original.Text = "Original:"
         '
         'label_available
         '
@@ -791,20 +799,11 @@ Partial Class Form1
         Me.ComboBox1.Size = New System.Drawing.Size(293, 21)
         Me.ComboBox1.TabIndex = 1
         '
-        'make_button
-        '
-        Me.make_button.Location = New System.Drawing.Point(657, 346)
-        Me.make_button.Name = "make_button"
-        Me.make_button.Size = New System.Drawing.Size(75, 23)
-        Me.make_button.TabIndex = 29
-        Me.make_button.Text = "Make"
-        Me.make_button.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(809, 533)
+        Me.ClientSize = New System.Drawing.Size(813, 534)
         Me.Controls.Add(Me.v)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.MenuStrip1)

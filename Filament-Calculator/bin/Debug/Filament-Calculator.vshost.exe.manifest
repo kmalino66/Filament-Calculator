@@ -42,24 +42,42 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Filament-Calculator.exe" size="51144">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Filament-Calculator.exe" size="67016">
       <assemblyIdentity name="Filament-Calculator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4HMppiDEBBO2pETgm1RH9t7y+vatpTiRlHCg8SgZjME=</dsig:DigestValue>
+        <dsig:DigestValue>TrpQsId+o1Cwv5oKueOgc4J1v3S+5v0BxgbbTLc1yRM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Filament-Calculator.exe.config" size="928">
+  <file name="Filament-Calculator.exe.config" size="1283">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>1F5WVVP7dSnslUSJdTGLl0POwqS70QvxYKj5NC81Cao=</dsig:DigestValue>
+      <dsig:DigestValue>JBYP/+PTz3hPDve2NtbdBE90OuPAxNvlnv73z/SQ/cA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="FilamentProfile.mdf" size="3342336" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>twhNpFUXeVRoZYF2x64ieZk445qU8bbEbCdiwinG5lA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="FilamentProfile_log.ldf" size="851968" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>iKtZV3JVbYKX3KXZbRXWb+g6dn8pPPsgIplki1TkzwY=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
