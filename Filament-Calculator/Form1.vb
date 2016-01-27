@@ -43,4 +43,39 @@ Public Class Form1
         End If
 
     End Sub
+
+    Private Sub radio_cpm_CheckedChanged(sender As Object, e As EventArgs) Handles radio_cpm.CheckedChanged
+
+        If radio_cpm.Checked Then
+            radio_m.Checked = False
+            radio_o.Checked = False
+        End If
+
+    End Sub
+
+    Private Sub radio_m_CheckedChanged(sender As Object, e As EventArgs) Handles radio_m.CheckedChanged
+        If radio_m.Checked Then
+            radio_cpm.Checked = False
+            radio_o.Checked = False
+        End If
+    End Sub
+
+    Private Sub radio_o_CheckedChanged(sender As Object, e As EventArgs) Handles radio_o.CheckedChanged
+        If radio_o.Checked Then
+            radio_cpm.Checked = False
+            radio_m.Checked = False
+        End If
+    End Sub
+
+    Private Sub radio_meters_CheckedChanged(sender As Object, e As EventArgs) Handles radio_meters.CheckedChanged
+        If radio_meters.Checked Then
+            radio_mm.Checked = False
+        End If
+    End Sub
+
+    Private Sub radio_mm_CheckedChanged(sender As Object, e As EventArgs) Handles radio_mm.CheckedChanged
+        If radio_mm.Checked Then
+            radio_meters.Checked = False
+        End If
+    End Sub
 End Class

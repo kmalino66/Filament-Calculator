@@ -66,10 +66,6 @@ Partial Class Form1
         Me.radio_meters = New System.Windows.Forms.RadioButton()
         Me.radio_mm = New System.Windows.Forms.RadioButton()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.File = New System.Windows.Forms.ToolStripMenuItem()
-        Me.openSettings = New System.Windows.Forms.ToolStripMenuItem()
-        Me.saveFilSet = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NewProfileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.comboTool = New System.Windows.Forms.ToolStripComboBox()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
@@ -496,37 +492,12 @@ Partial Class Form1
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.File, Me.comboTool, Me.NewToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.comboTool, Me.NewToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(813, 27)
         Me.MenuStrip1.TabIndex = 29
         Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'File
-        '
-        Me.File.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.openSettings, Me.saveFilSet, Me.NewProfileToolStripMenuItem})
-        Me.File.Name = "File"
-        Me.File.Size = New System.Drawing.Size(37, 23)
-        Me.File.Text = "File"
-        '
-        'openSettings
-        '
-        Me.openSettings.Name = "openSettings"
-        Me.openSettings.Size = New System.Drawing.Size(192, 22)
-        Me.openSettings.Text = "Open Settings"
-        '
-        'saveFilSet
-        '
-        Me.saveFilSet.Name = "saveFilSet"
-        Me.saveFilSet.Size = New System.Drawing.Size(192, 22)
-        Me.saveFilSet.Text = "Save Filament Settings"
-        '
-        'NewProfileToolStripMenuItem
-        '
-        Me.NewProfileToolStripMenuItem.Name = "NewProfileToolStripMenuItem"
-        Me.NewProfileToolStripMenuItem.Size = New System.Drawing.Size(192, 22)
-        Me.NewProfileToolStripMenuItem.Text = "New Profile"
         '
         'comboTool
         '
@@ -870,9 +841,6 @@ Partial Class Form1
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
-    Friend WithEvents File As ToolStripMenuItem
-    Friend WithEvents openSettings As ToolStripMenuItem
-    Friend WithEvents saveFilSet As ToolStripMenuItem
     Friend WithEvents Label19 As Label
     Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents comboTool As ToolStripComboBox
@@ -898,6 +866,5 @@ Partial Class Form1
     Friend WithEvents label_available As Label
     Friend WithEvents textbox_original As TextBox
     Friend WithEvents textbox_available As TextBox
-    Friend WithEvents NewProfileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents make_button As Button
 End Class
