@@ -25,7 +25,7 @@ Partial Class Form2
         Me.Label1 = New System.Windows.Forms.Label()
         Me.spoolNameTextBox = New System.Windows.Forms.TextBox()
         Me.okButton = New System.Windows.Forms.Button()
-        Me.cancelButton = New System.Windows.Forms.Button()
+        Me.button_cancel = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -53,21 +53,22 @@ Partial Class Form2
         Me.okButton.Text = "OK"
         Me.okButton.UseVisualStyleBackColor = True
         '
-        'cancelButton
+        'button_cancel
         '
-        Me.cancelButton.Location = New System.Drawing.Point(197, 89)
-        Me.cancelButton.Name = "cancelButton"
-        Me.cancelButton.Size = New System.Drawing.Size(75, 23)
-        Me.cancelButton.TabIndex = 3
-        Me.cancelButton.Text = "Cancel"
-        Me.cancelButton.UseVisualStyleBackColor = True
+        Me.button_cancel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.button_cancel.Location = New System.Drawing.Point(197, 89)
+        Me.button_cancel.Name = "button_cancel"
+        Me.button_cancel.Size = New System.Drawing.Size(75, 23)
+        Me.button_cancel.TabIndex = 3
+        Me.button_cancel.Text = "Cancel"
+        Me.button_cancel.UseVisualStyleBackColor = True
         '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(284, 136)
-        Me.Controls.Add(Me.cancelButton)
+        Me.Controls.Add(Me.button_cancel)
         Me.Controls.Add(Me.okButton)
         Me.Controls.Add(Me.spoolNameTextBox)
         Me.Controls.Add(Me.Label1)
@@ -83,5 +84,5 @@ Partial Class Form2
     Friend WithEvents Label1 As Label
     Friend WithEvents spoolNameTextBox As TextBox
     Friend WithEvents okButton As Button
-    Friend WithEvents cancelButton As Button
+    Friend WithEvents button_cancel As Button
 End Class

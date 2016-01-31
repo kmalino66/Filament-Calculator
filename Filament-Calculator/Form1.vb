@@ -14,25 +14,19 @@ Public Class Form1
         dbCmd.Connection = dbConnection
         dbCmd.CommandType = CommandType.Text
 
-        'just put command text in.
-        dbCmd.CommandText = "select * from Profile;"
+
+        'Get all the profiles
+        dbCmd.CommandText = "select name_s from Profile;"
 
         Dim reader As SqlDataReader = dbCmd.ExecuteReader
 
-        If reader.HasRows Then
-            reader.Read()
-        End If
 
-        While reader.GetString(0) IsNot Nothing
+        While reader.Read
 
             Try
                 comboTool.Items.Add(reader.GetString(0))
-                costPerMeter.Text = reader.GetDouble(1)
-                workerHourly.Text = reader.GetDouble(2)
-                printerCostPerHour.Text = reader.GetDouble(3)
-                upchargePercent.Text = reader.GetDouble(4)
 
-                'TODO Add handler for when the radio selected is changed.
+
                 radio_cpm.Checked = True
 
 
@@ -41,10 +35,27 @@ Public Class Form1
 
             End Try
 
-            reader.Read()
 
         End While
 
+        reader.Close()
+
+
+        'Check for other tab
+        dbCmd.CommandText = "Select name from Spool;"
+
+        Dim reader1 As SqlDataReader = dbCmd.ExecuteReader
+
+        While reader1.Read
+
+            Try
+                ComboBox1.Items.Add(reader1.GetString(0))
+            Catch ex As Exception
+                'Do nothing
+            End Try
+        End While
+
+        reader1.Close()
 
         dbConnection.Close()
 
@@ -56,6 +67,10 @@ Public Class Form1
         If radio_cpm.Checked Then
             radio_m.Checked = False
             radio_o.Checked = False
+
+            amountOfFilamentSection(False)
+            spoolMassSection(False)
+            costPerMeterSection(True)
         End If
 
     End Sub
@@ -64,6 +79,10 @@ Public Class Form1
         If radio_m.Checked Then
             radio_cpm.Checked = False
             radio_o.Checked = False
+
+            amountOfFilamentSection(True)
+            spoolMassSection(False)
+            costPerMeterSection(False)
         End If
     End Sub
 
@@ -71,6 +90,10 @@ Public Class Form1
         If radio_o.Checked Then
             radio_cpm.Checked = False
             radio_m.Checked = False
+
+            amountOfFilamentSection(False)
+            spoolMassSection(True)
+            costPerMeterSection(False)
         End If
     End Sub
 
@@ -99,6 +122,8 @@ Public Class Form1
 
         'Calculates the total cost of the build and how much to charge the customer with the upcharge that is given.
         calcTotalCost()
+
+        updateDatabase()
 
     End Sub
 
@@ -216,19 +241,25 @@ Public Class Form1
         End Try
 
         Try
-            dbCmd.CommandText = "update Profile set cost_per_meter = " + costPerMeter.Text + ", work_per_hour = " + workerHourly.Text &
-                "print_per_hour = " + printerCostPerHour.Text + ", upcharge = " + upchargePercent.Text &
-                "where name = " + comboTool.Text + ";"
+            dbCmd.CommandText = "update Profile set cost_per_meter = '" + costPerMeter.Text + "', work_per_hour = '" + workerHourly.Text &
+                "', print_per_hour = '" + printerCostPerHour.Text + "', upcharge = '" + upchargePercent.Text &
+                "' where name_s = '" + comboTool.Text + "';"
             dbCmd.ExecuteNonQuery()
         Catch ex As Exception
             'This ends up being run if the program can't update the databse.
             Try
-                dbCmd.CommandText = "insert into Profile(name, cost_per_meter, work_per_hour, print_per_hour, upcharge values" &
-                    "(" + comboTool.Text + ", " + costPerMeter.Text + ", " + workerHourly.Text + ", " &
-                    printerCostPerHour.Text + ", " + upchargePercent.Text + ");"
+                dbCmd.CommandText = "insert into Profile(name_s, cost_per_meter, work_per_hour, print_per_hour, upcharge values" &
+                    "('" + comboTool.Text + "', '" + costPerMeter.Text + "', '" + workerHourly.Text + "', '" &
+                    printerCostPerHour.Text + "', '" + upchargePercent.Text + "');"
             Catch ex1 As Exception
                 'Do nothing
             End Try
+        End Try
+
+        Try
+            dbConnection.Close()
+        Catch ex As Exception
+
         End Try
 
 
@@ -238,8 +269,140 @@ Public Class Form1
 
     End Sub
 
+    Public Sub costPerMeterSection(ByVal enab As Boolean)
+        costPerMeter.Enabled = enab
+    End Sub
+
+    Public Sub spoolMassSection(ByVal enab As Boolean)
+        spoolmass.Enabled = enab
+        filamentdensity.Enabled = enab
+        filamentdiameter.Enabled = enab
+    End Sub
+
+    Public Sub amountOfFilamentSection(ByVal enab As Boolean)
+        filamentamount_meters.Enabled = enab
+    End Sub
+
+    Private Sub comboTool_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboTool.SelectedIndexChanged
+
+
+        Dim quote = """"
+        Dim name1 As String = comboTool.Text
+
+        dbConnection.Open()
+        dbCmd.Connection = dbConnection
+        dbCmd.CommandText = "Select * from Profile where name_s like '" + name1 + "';"
+
+        Dim reader As SqlDataReader = dbCmd.ExecuteReader
+        reader.Read()
+
+
+        costPerMeter.Text = reader.GetDouble(1)
+        workerHourly.Text = reader.GetDouble(2)
+        printerCostPerHour.Text = reader.GetDouble(3)
+        upchargePercent.Text = reader.GetDouble(4)
+
+        reader.Close()
+        dbConnection.Close()
+    End Sub
+
     Private Sub comboTool_GotFocus(sender As Object, e As EventArgs) Handles comboTool.GotFocus
+        Dim name As String = comboTool.Text
+
         updateDatabase()
+    End Sub
+
+    Private Sub toolstrip_new_Click(sender As Object, e As EventArgs) Handles toolstrip_new.Click
+        'When they want to create a new profile, we want to bring up a box to ask them the name.
+        Dim form As New Form2
+        form.Show()
+    End Sub
+
+    Public Sub createNewProfile(ByVal profileName As String, ByVal form As Form2)
+
+        Dim temp1Bool As Boolean = False
+
+        dbConnection.Open()
+        dbCmd.Connection = dbConnection
+
+        dbCmd.CommandText = "select name_s from Profile;"
+        Dim reader As SqlDataReader = dbCmd.ExecuteReader
+
+        While reader.Read
+            If profileName Is reader.GetString(0) Then
+                temp1Bool = True
+            End If
+        End While
+
+        reader.Close()
+
+        If temp1Bool Then
+            MsgBox("Sorry it appears that this name is already used. Please try again", MsgBoxStyle.OkOnly)
+            dbConnection.Close()
+
+        Else
+            comboTool.Items.Add(profileName)
+
+            dbCmd.CommandText = "insert into Profile(name_s, cost_per_meter, work_per_hour, print_per_hour, upcharge) values" &
+                    "('" + profileName + "', '0', '0', '0', '0');"
+            dbCmd.ExecuteNonQuery()
+            MsgBox("Success!", MsgBoxStyle.OkOnly, "YAY")
+            dbConnection.Close()
+
+
+            form.Close()
+        End If
+
+
+
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        'We will want to update the text fields.
+
+        dbConnection.Open()
+        dbCmd.Connection = dbConnection
+        dbCmd.CommandText = "select * from Spool where name like '" + ComboBox1.Text + "';"
+
+        Dim reader As SqlDataReader = dbCmd.ExecuteReader
+
+        reader.Read()
+
+        Try
+            textbox_original.Text = reader.GetDouble(1)
+            textbox_available.Text = reader.GetDouble(2)
+            combobox_filament_type.Text = (reader.GetString(3)) + ""
+            textbox_spool_cost.Text = reader.GetDouble(4)
+        Catch ex As Exception
+
+        End Try
+
+        reader.Close()
+        dbConnection.Close()
+
+
+    End Sub
+
+    Private Sub ComboBox1_GotFocus(sender As Object, e As EventArgs) Handles ComboBox1.GotFocus
+
+        'Save info
+        dbConnection.Open()
+        dbCmd.Connection = dbConnection
+
+
+        Try
+            dbCmd.CommandText = "update Spool set original_filament = '" + textbox_original.Text + "', available_filament = '" + textbox_available.Text &
+            "', filament_type = '" + combobox_filament_type.Text + "', spool_cost = '" + textbox_spool_cost.Text + "' where name = '" + ComboBox1.Text + "';"
+            dbCmd.ExecuteNonQuery()
+
+        Catch ex As Exception
+            dbCmd.CommandText = "insert into Spool(name, original_filament, available_filament, filament_type, spool_cost) values" &
+                "('" + ComboBox1.Text + "', '" + textbox_original.Text + "', '" + textbox_available.Text + "', '" + combobox_filament_type.Text &
+                "', '" + textbox_spool_cost.Text + "');"
+            dbCmd.ExecuteNonQuery()
+        End Try
+
+        dbConnection.Close()
 
     End Sub
 End Class

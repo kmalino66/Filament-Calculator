@@ -67,9 +67,7 @@ Partial Class Form1
         Me.radio_mm = New System.Windows.Forms.RadioButton()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.comboTool = New System.Windows.Forms.ToolStripComboBox()
-        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.toolstrip_new = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.v = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -94,6 +92,7 @@ Partial Class Form1
         Me.button_decommission_spool = New System.Windows.Forms.Button()
         Me.button_useSpool = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Label25 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.v.SuspendLayout()
@@ -492,7 +491,7 @@ Partial Class Form1
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.comboTool, Me.NewToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.comboTool, Me.toolstrip_new})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(813, 27)
@@ -504,19 +503,11 @@ Partial Class Form1
         Me.comboTool.Name = "comboTool"
         Me.comboTool.Size = New System.Drawing.Size(121, 23)
         '
-        'NewToolStripMenuItem
+        'toolstrip_new
         '
-        Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(43, 23)
-        Me.NewToolStripMenuItem.Text = "New"
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'SaveFileDialog1
-        '
-        Me.SaveFileDialog1.DefaultExt = "txt"
+        Me.toolstrip_new.Name = "toolstrip_new"
+        Me.toolstrip_new.Size = New System.Drawing.Size(43, 23)
+        Me.toolstrip_new.Text = "New"
         '
         'Label19
         '
@@ -581,6 +572,7 @@ Partial Class Form1
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.Label25)
         Me.TabPage2.Controls.Add(Me.label_original)
         Me.TabPage2.Controls.Add(Me.label_available)
         Me.TabPage2.Controls.Add(Me.textbox_original)
@@ -770,6 +762,15 @@ Partial Class Form1
         Me.ComboBox1.Size = New System.Drawing.Size(293, 21)
         Me.ComboBox1.TabIndex = 1
         '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(383, 46)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(45, 13)
+        Me.Label25.TabIndex = 26
+        Me.Label25.Text = "Original:"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -839,10 +840,8 @@ Partial Class Form1
     Friend WithEvents radio_meters As RadioButton
     Friend WithEvents radio_mm As RadioButton
     Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents OpenFileDialog1 As OpenFileDialog
-    Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents Label19 As Label
-    Friend WithEvents NewToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents toolstrip_new As ToolStripMenuItem
     Friend WithEvents comboTool As ToolStripComboBox
     Friend WithEvents v As TabControl
     Friend WithEvents TabPage1 As TabPage
@@ -867,4 +866,5 @@ Partial Class Form1
     Friend WithEvents textbox_original As TextBox
     Friend WithEvents textbox_available As TextBox
     Friend WithEvents make_button As Button
+    Friend WithEvents Label25 As Label
 End Class

@@ -76,6 +76,42 @@ Namespace My
                 Return CType(Me("FilamentProfileConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property moneySpent() As Double
+            Get
+                Return CType(Me("moneySpent"),Double)
+            End Get
+            Set
+                Me("moneySpent") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property moneyRec() As Double
+            Get
+                Return CType(Me("moneyRec"),Double)
+            End Get
+            Set
+                Me("moneyRec") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property filamentUsed() As Double
+            Get
+                Return CType(Me("filamentUsed"),Double)
+            End Get
+            Set
+                Me("filamentUsed") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

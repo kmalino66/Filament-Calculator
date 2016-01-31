@@ -42,24 +42,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Filament-Calculator.exe" size="60872">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Filament-Calculator.exe" size="64968">
       <assemblyIdentity name="Filament-Calculator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PSonTsMvnHmByjoDIBDys3LC9S+F21mNZdCL9jRu0Y0=</dsig:DigestValue>
+        <dsig:DigestValue>/6MwXTNYS9WbMO2B2jWM1nH+W/HG3akQvHkWqHcGVfA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Filament-Calculator.exe.config" size="1283">
+  <file name="Filament-Calculator.exe.config" size="1643">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>JBYP/+PTz3hPDve2NtbdBE90OuPAxNvlnv73z/SQ/cA=</dsig:DigestValue>
+      <dsig:DigestValue>Fp6RSOPjXb5uEuh4duhOlZo3nn0TDNr7eWGGdpToBfc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="FilamentProfile.mdf" size="3342336" writeableType="applicationData">
@@ -68,7 +68,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>XEP7Gh34+sjcT19JJPec+OS9C5Y/7qfXw6QObIFpr/g=</dsig:DigestValue>
+      <dsig:DigestValue>j58GlI4sd4rg6YdvMnpgReAgi7OOyNDabU3ouozRb7s=</dsig:DigestValue>
     </hash>
   </file>
   <file name="FilamentProfile_log.ldf" size="851968" writeableType="applicationData">
@@ -77,7 +77,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>gwxQIoe2p0R4U+lvu/1UdU4UAkTgy5bmu8mpMY4lv7E=</dsig:DigestValue>
+      <dsig:DigestValue>v6Kd7+zUm5N/r1sc58Q353VplJ55TpZxIqhXJMs8ku0=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
