@@ -40,3 +40,4 @@ C:\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\bin\
 C:\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\bin\Debug\Filament-Calculator.xml
 C:\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament-Calculator.exe.manifest
 C:\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament-Calculator.application
+F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament_Calculator.MakeDia.resources

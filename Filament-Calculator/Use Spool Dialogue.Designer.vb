@@ -22,7 +22,7 @@ Partial Class Use_Spool_Dialogue
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim filament_used_textbox As System.Windows.Forms.TextBox
+        Me.text_fil = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -31,8 +31,14 @@ Partial Class Use_Spool_Dialogue
         Me.money_charged_textbox = New System.Windows.Forms.TextBox()
         Me.button_ok = New System.Windows.Forms.Button()
         Me.button_cancel = New System.Windows.Forms.Button()
-        filament_used_textbox = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
+        '
+        'text_fil
+        '
+        Me.text_fil.Location = New System.Drawing.Point(172, 120)
+        Me.text_fil.Name = "text_fil"
+        Me.text_fil.Size = New System.Drawing.Size(100, 20)
+        Me.text_fil.TabIndex = 6
         '
         'Label1
         '
@@ -85,13 +91,6 @@ Partial Class Use_Spool_Dialogue
         Me.money_charged_textbox.Size = New System.Drawing.Size(100, 20)
         Me.money_charged_textbox.TabIndex = 5
         '
-        'filament_used_textbox
-        '
-        filament_used_textbox.Location = New System.Drawing.Point(172, 120)
-        filament_used_textbox.Name = "filament_used_textbox"
-        filament_used_textbox.Size = New System.Drawing.Size(100, 20)
-        filament_used_textbox.TabIndex = 6
-        '
         'button_ok
         '
         Me.button_ok.Location = New System.Drawing.Point(305, 175)
@@ -117,7 +116,7 @@ Partial Class Use_Spool_Dialogue
         Me.ClientSize = New System.Drawing.Size(475, 219)
         Me.Controls.Add(Me.button_cancel)
         Me.Controls.Add(Me.button_ok)
-        Me.Controls.Add(filament_used_textbox)
+        Me.Controls.Add(Me.text_fil)
         Me.Controls.Add(Me.money_charged_textbox)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -139,4 +138,5 @@ Partial Class Use_Spool_Dialogue
     Friend WithEvents money_charged_textbox As TextBox
     Friend WithEvents button_ok As Button
     Friend WithEvents button_cancel As Button
+    Friend WithEvents text_fil As TextBox
 End Class

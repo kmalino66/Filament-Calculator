@@ -7,8 +7,10 @@ Public Class Form1
     Public dbConnection As New SqlConnection
     Public dbCmd As New SqlCommand
 
+    'Runs when the form is loaded.
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        'Open the database connection.
         dbConnection.ConnectionString = My.Settings.FilamentProfileConnectionString
         dbConnection.Open()
         dbCmd.Connection = dbConnection
@@ -25,21 +27,15 @@ Public Class Form1
 
             Try
                 comboTool.Items.Add(reader.GetString(0))
-
-
                 radio_cpm.Checked = True
-
-
 
             Catch ex As Exception
 
             End Try
 
-
         End While
 
         reader.Close()
-
 
         'Check for other tab
         dbCmd.CommandText = "Select name from Spool;"
@@ -47,7 +43,6 @@ Public Class Form1
         Dim reader1 As SqlDataReader = dbCmd.ExecuteReader
 
         While reader1.Read
-
             Try
                 ComboBox1.Items.Add(reader1.GetString(0))
             Catch ex As Exception
@@ -56,12 +51,11 @@ Public Class Form1
         End While
 
         reader1.Close()
-
         dbConnection.Close()
-
 
     End Sub
 
+    'Runs when the cpm radio is clickekd
     Private Sub radio_cpm_CheckedChanged(sender As Object, e As EventArgs) Handles radio_cpm.CheckedChanged
 
         If radio_cpm.Checked Then
@@ -385,6 +379,66 @@ Public Class Form1
 
     Private Sub ComboBox1_GotFocus(sender As Object, e As EventArgs) Handles ComboBox1.GotFocus
 
+        updateSpool()
+
+    End Sub
+
+    'This method controls everything that needs to happen when a spool is used to
+    'track how filament is used on the different spools.
+    Public Sub useSpool(ByVal name As String, ByVal used As Double, ByVal charged As Double, ByVal form As Use_Spool_Dialogue)
+
+        useSpool(name, used, charged)
+        form.Close()
+
+
+
+    End Sub
+
+    Public Sub useSpool(name As String, used As Double, charged As Double)
+        Dim available As Double
+
+        Try
+            dbConnection.Open()
+        Catch ex As Exception
+
+        End Try
+
+        dbCmd.Connection = dbConnection
+        dbCmd.CommandText = "select * from Spool where name like '" + name + "';"
+
+        Dim reader As SqlDataReader = dbCmd.ExecuteReader
+        reader.Read()
+
+        Try
+            available = reader.GetDouble(2)
+
+        Catch ex As Exception
+
+        End Try
+        reader.Close()
+
+        If available < used Then
+            MsgBox("Not enough filament.", MsgBoxStyle.OkOnly)
+            reader.Close()
+            dbConnection.Close()
+            Return
+        End If
+
+        My.Settings.moneyRec = My.Settings.moneyRec + charged
+        moneyRecTextBox.Text = My.Settings.moneyRec
+        My.Settings.filamentUsed = My.Settings.filamentUsed + used
+        filamentUsedTextBox.Text = My.Settings.filamentUsed
+
+        Dim left As Double = available - used
+
+        dbCmd.CommandText = "update Spool set available_filament = " + left.ToString + " where name like '" + name + "';"
+        dbCmd.ExecuteNonQuery()
+
+        reader.Close()
+        dbConnection.Close()
+    End Sub
+
+    Private Sub updateSpool()
         'Save info
         dbConnection.Open()
         dbCmd.Connection = dbConnection
@@ -402,6 +456,75 @@ Public Class Form1
             dbCmd.ExecuteNonQuery()
         End Try
 
+        dbConnection.Close()
+    End Sub
+
+    Private Sub button_useSpool_Click(sender As Object, e As EventArgs) Handles button_useSpool.Click
+        Dim form As New Use_Spool_Dialogue
+        form.Show()
+    End Sub
+
+    Private Sub button_new_spool_Click(sender As Object, e As EventArgs) Handles button_new_spool.Click
+
+        Dim form As New New_Spool_Dialog
+        form.Show()
+
+    End Sub
+
+    Public Sub addSpool(ByVal name As String, ByVal length As Double, ByVal cost As Double, ByVal form As New_Spool_Dialog)
+
+        dbConnection.Open()
+        dbCmd.Connection = dbConnection
+        dbCmd.CommandText = "insert into Spool(name, original_filament, available_filament, filament_type, spool_cost) values ('" + name &
+            "', '" + length.ToString + "', '" + length.ToString + "', '" + "" + "', '" + cost.ToString + "');"
+        dbCmd.ExecuteNonQuery()
+
+        ComboBox1.Items.Add(name)
+
+        dbConnection.Close()
+
+        My.Settings.moneySpent = My.Settings.moneySpent + cost
+        moneySpentTextbox.Text = My.Settings.moneySpent
+
+        form.Close()
+
+
+    End Sub
+
+    'This is run when the make button is clicked
+    Private Sub make_button_Click(sender As Object, e As EventArgs) Handles make_button.Click
+        Dim form As New MakeDia
+        form.Show()
+    End Sub
+
+    Public Sub makeWithSpool(ByVal name As String, ByVal form As MakeDia)
+
+        useSpool(name, filamentusage.Text, charge.Text)
+
+    End Sub
+
+    Private Sub button_decommission_spool_Click(sender As Object, e As EventArgs) Handles button_decommission_spool.Click
+
+        Dim spoolName As String = ComboBox1.Text
+
+        dbConnection.Open()
+        dbCmd.Connection = dbConnection
+        dbCmd.CommandText = "delete from spool where name like '" + spoolName + "';"
+        dbCmd.ExecuteNonQuery()
+        dbConnection.Close()
+
+        dbConnection.Open()
+        dbCmd.Connection = dbConnection
+        dbCmd.CommandText = "select name from spool;"
+
+        Dim reader As SqlDataReader = dbCmd.ExecuteReader
+        ComboBox1.Items.Clear()
+
+        While reader.Read
+            ComboBox1.Items.Add(reader.GetString(0))
+        End While
+
+        reader.Close()
         dbConnection.Close()
 
     End Sub

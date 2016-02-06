@@ -73,11 +73,11 @@ Partial Class Form1
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.make_button = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label25 = New System.Windows.Forms.Label()
         Me.label_original = New System.Windows.Forms.Label()
         Me.label_available = New System.Windows.Forms.Label()
         Me.textbox_original = New System.Windows.Forms.TextBox()
         Me.textbox_available = New System.Windows.Forms.TextBox()
-        Me.button_save_changes = New System.Windows.Forms.Button()
         Me.filamentUsedTextBox = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.moneyRecTextBox = New System.Windows.Forms.TextBox()
@@ -92,7 +92,6 @@ Partial Class Form1
         Me.button_decommission_spool = New System.Windows.Forms.Button()
         Me.button_useSpool = New System.Windows.Forms.Button()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Label25 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.v.SuspendLayout()
@@ -577,7 +576,6 @@ Partial Class Form1
         Me.TabPage2.Controls.Add(Me.label_available)
         Me.TabPage2.Controls.Add(Me.textbox_original)
         Me.TabPage2.Controls.Add(Me.textbox_available)
-        Me.TabPage2.Controls.Add(Me.button_save_changes)
         Me.TabPage2.Controls.Add(Me.filamentUsedTextBox)
         Me.TabPage2.Controls.Add(Me.Label24)
         Me.TabPage2.Controls.Add(Me.moneyRecTextBox)
@@ -599,6 +597,15 @@ Partial Class Form1
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = " Spool Tracker(WIP)"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(383, 46)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(45, 13)
+        Me.Label25.TabIndex = 26
+        Me.Label25.Text = "Original:"
         '
         'label_original
         '
@@ -632,15 +639,6 @@ Partial Class Form1
         Me.textbox_available.ReadOnly = True
         Me.textbox_available.Size = New System.Drawing.Size(100, 20)
         Me.textbox_available.TabIndex = 22
-        '
-        'button_save_changes
-        '
-        Me.button_save_changes.Location = New System.Drawing.Point(103, 44)
-        Me.button_save_changes.Name = "button_save_changes"
-        Me.button_save_changes.Size = New System.Drawing.Size(100, 23)
-        Me.button_save_changes.TabIndex = 21
-        Me.button_save_changes.Text = "Save Changes"
-        Me.button_save_changes.UseVisualStyleBackColor = True
         '
         'filamentUsedTextBox
         '
@@ -762,15 +760,6 @@ Partial Class Form1
         Me.ComboBox1.Size = New System.Drawing.Size(293, 21)
         Me.ComboBox1.TabIndex = 1
         '
-        'Label25
-        '
-        Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(383, 46)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(45, 13)
-        Me.Label25.TabIndex = 26
-        Me.Label25.Text = "Original:"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -860,7 +849,6 @@ Partial Class Form1
     Friend WithEvents Label23 As Label
     Friend WithEvents moneySpentTextbox As TextBox
     Friend WithEvents Label22 As Label
-    Friend WithEvents button_save_changes As Button
     Friend WithEvents label_original As Label
     Friend WithEvents label_available As Label
     Friend WithEvents textbox_original As TextBox

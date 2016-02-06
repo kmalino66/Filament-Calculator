@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Filament-Calculator.exe" size="64968">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Filament-Calculator.exe" size="70088">
       <assemblyIdentity name="Filament-Calculator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>/6MwXTNYS9WbMO2B2jWM1nH+W/HG3akQvHkWqHcGVfA=</dsig:DigestValue>
+        <dsig:DigestValue>H8xMDo9PGSrvx+PHz8q8h+4lc4VpuxGrMUsjaQUDR+w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -68,7 +68,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>j58GlI4sd4rg6YdvMnpgReAgi7OOyNDabU3ouozRb7s=</dsig:DigestValue>
+      <dsig:DigestValue>8ai5s+xDGnVrS19ye4MDy0WcZWW3w55TNyfnu49JlhA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="FilamentProfile_log.ldf" size="851968" writeableType="applicationData">
@@ -77,7 +77,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>v6Kd7+zUm5N/r1sc58Q353VplJ55TpZxIqhXJMs8ku0=</dsig:DigestValue>
+      <dsig:DigestValue>ak0IHD7Y5biU2czBELztIwWyNuK7JgXf7ZxIbOlDf10=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
