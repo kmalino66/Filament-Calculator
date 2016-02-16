@@ -146,12 +146,6 @@
     <Compile Include="New Spool Dialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewSpool.Designer.vb">
-      <DependentUpon>NewSpool.vb</DependentUpon>
-    </Compile>
-    <Compile Include="NewSpool.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Use Spool Dialogue.Designer.vb">
       <DependentUpon>Use Spool Dialogue.vb</DependentUpon>
     </Compile>
@@ -177,9 +171,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="New Spool Dialog.resx">
       <DependentUpon>New Spool Dialog.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewSpool.resx">
-      <DependentUpon>NewSpool.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Use Spool Dialogue.resx">
       <DependentUpon>Use Spool Dialogue.vb</DependentUpon>

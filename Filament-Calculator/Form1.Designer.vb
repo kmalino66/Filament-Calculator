@@ -68,6 +68,7 @@ Partial Class Form1
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.comboTool = New System.Windows.Forms.ToolStripComboBox()
         Me.toolstrip_new = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.v = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -490,7 +491,7 @@ Partial Class Form1
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.comboTool, Me.toolstrip_new})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.comboTool, Me.toolstrip_new, Me.DeleteToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(813, 27)
@@ -507,6 +508,12 @@ Partial Class Form1
         Me.toolstrip_new.Name = "toolstrip_new"
         Me.toolstrip_new.Size = New System.Drawing.Size(43, 23)
         Me.toolstrip_new.Text = "New"
+        '
+        'DeleteToolStripMenuItem
+        '
+        Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(52, 23)
+        Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'Label19
         '
@@ -595,7 +602,7 @@ Partial Class Form1
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage2.Size = New System.Drawing.Size(779, 442)
         Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = " Spool Tracker(WIP)"
+        Me.TabPage2.Text = " Spool Tracker"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
         'Label25
@@ -855,4 +862,5 @@ Partial Class Form1
     Friend WithEvents textbox_available As TextBox
     Friend WithEvents make_button As Button
     Friend WithEvents Label25 As Label
+    Friend WithEvents DeleteToolStripMenuItem As ToolStripMenuItem
 End Class

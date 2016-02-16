@@ -12,7 +12,20 @@ Public Class Form1
 
         'Open the database connection.
         dbConnection.ConnectionString = My.Settings.FilamentProfileConnectionString
-        dbConnection.Open()
+
+
+
+
+        Try
+            dbConnection.Open()
+
+        Catch
+            Dim path As String = My.Application.Info.DirectoryPath + "\FilamentProfile.mdf"
+
+            File.Create(path).Close()
+            dbConnection.Open()
+        End Try
+
         dbCmd.Connection = dbConnection
         dbCmd.CommandType = CommandType.Text
 
@@ -527,5 +540,26 @@ Public Class Form1
         reader.Close()
         dbConnection.Close()
 
+    End Sub
+
+    Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
+
+        dbConnection.Open()
+        dbCmd.CommandText = "delete from Profile where name_s like '" + comboTool.Text + "';"
+
+        dbCmd.ExecuteNonQuery()
+
+        comboTool.Items.Clear()
+
+        dbCmd.CommandText = "select name_s from Profile;"
+
+        Dim reader As SqlDataReader = dbCmd.ExecuteReader
+
+        While reader.Read
+            comboTool.Items.Add(reader.GetString(0))
+        End While
+
+        reader.Close()
+        dbConnection.Close()
     End Sub
 End Class

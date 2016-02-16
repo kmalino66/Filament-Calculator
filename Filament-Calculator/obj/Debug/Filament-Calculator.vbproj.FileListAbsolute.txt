@@ -15,7 +15,6 @@ F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calcula
 F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament-Calculator.vbprojResolveAssemblyReference.cache
 F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament_Calculator.Form2.resources
 F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament_Calculator.New_Spool_Dialog.resources
-F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament_Calculator.NewSpool.resources
 F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\obj\Debug\Filament_Calculator.Use_Spool_Dialogue.resources
 F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\bin\Debug\FilamentProfile.mdf
 F:\Dropbox\Dropbox\Programming\Visual Basic\Filament-Calculator\Filament-Calculator\bin\Debug\FilamentProfile_log.ldf
